@@ -30,7 +30,7 @@ const agentColors = {
 const lineupData = {
     Ascent: {
         minimap: {
-            attacking: "assets/images/minimaps/ascent.png",
+            attacking: "assets/images/minimaps/Ascent.png",
             defending: "assets/images/minimaps/ASCENT-DEF.png"
         },
         lineups: [
@@ -1299,7 +1299,7 @@ const lineupData = {
     //2222222222222222222222222222222222222222222222222222222222222222222222222222222
     Haven: {
         minimap: {
-            attacking: "assets/images/minimaps/haven.png",
+            attacking: "assets/images/minimaps/Haven.png",
             defending: "assets/images/minimaps/HAVEN-DEF.png"
         },
         lineups: [
@@ -1752,7 +1752,7 @@ const lineupData = {
     //2222222222222222222222222222222222222222222222222222222222222222222222222222222
     Pearl: {
         minimap: {
-            attacking: "assets/images/minimaps/pearl.png",
+            attacking: "assets/images/minimaps/Pearl.png",
             defending: "assets/images/minimaps/PEARL-DEF.png"
         },
         lineups: [
@@ -2103,7 +2103,7 @@ const lineupData = {
     //2222222222222222222222222222222222222222222222222222222222222222222222222222222
     Icebox: {
         minimap: {
-            attacking: "assets/images/minimaps/icebox.png",
+            attacking: "assets/images/minimaps/Icebox.png",
             defending: "assets/images/minimaps/ICEBOX-DEF.png"
         },
         lineups: [
@@ -2463,7 +2463,7 @@ const lineupData = {
     //2222222222222222222222222222222222222222222222222222222222222222222222222222222
     Fracture: {
         minimap: {
-            attacking: "assets/images/minimaps/fracture.png",
+            attacking: "assets/images/minimaps/Fracture.png",
             defending: "assets/images/minimaps/FRACTURE-DEF.png"
         },
         lineups: 
