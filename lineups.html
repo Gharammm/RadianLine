@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RadianLine - Lineups</title>
+  <link rel="stylesheet" href="styles/main.css"/>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <img src="assets/images/agent8-logo.png" alt="RadianLine Logo" class="logo">
+      <div class="map-title">
+        <h1>Lineups for <span id="map-name">Map</span></h1>
+        <img id="map-image" src="" alt="Map Image">
+      </div>
+      <a class="back-button" href="index.html">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to Maps
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <div class="quick-tip" id="quick-tip">
+      <span class="info-icon">ℹ️</span>
+      <p><strong>Choose </strong>a Role, <strong>Pick </strong>an agent, and <strong>Click</strong> a dot to see the lineup. </p>
+      <button class="close-tip-btn" onclick="closeQuickTip()">✖</button>
+</div>
+
+    <div class="filters-container">
+      <div class="filter-group agent-select-group">
+        <label for="agent-filter">Agents:</label>
+        <div class="agent-select-wrapper">
+          <img id="agent-image" class="inline-agent-image" src="" alt="" style="display: none;">
+          <select id="agent-filter">
+            <option value="">Pick an agent</option>
+            <option value="Sova">Sova</option>
+            <option value="Viper">Viper</option>
+            <option value="Brimstone">Brimstone</option>
+            <option value="Killjoy">Killjoy</option>
+            <option value="Cypher">Cypher</option>
+            <option value="Phoenix">Phoenix</option>
+            <option value="Sage">Sage</option>
+            <option value="Reyna">Reyna</option>
+            <option value="Omen">Omen</option>
+            <option value="Jett">Jett</option>
+            <option value="Breach">Breach</option>
+            <option value="Raze">Raze</option>
+            <option value="Skye">Skye</option>
+            <option value="Yoru">Yoru</option>
+            <option value="Astra">Astra</option>
+            <option value="KAYO">KAY/O</option>
+            <option value="Gekko">Gekko</option>
+            <option value="Neon">Neon</option>
+            <option value="Iso">Iso</option>
+            <option value="Chamber">Chamber</option>
+            <option value="Harbor">Harbor</option>
+            <option value="Clove">Clove</option>
+            <option value="Deadlock">Deadlock</option>
+            <option value="Fade">Fade</option>
+            <option value="Tejo">Tejo</option>
+        </select>
+        </div>
+      </div>
+      
+
+
+      <div class="filter-group">
+        <label>Role:</label>
+        <div class="role-toggle">
+          <button id="attacking-btn" class="role-btn attacking active"
+                  onclick="filterByRole('attacking')">
+            Attacking
+          </button>
+          <button id="defending-btn" class="role-btn defending"
+                  onclick="filterByRole('defending')">
+            Defending
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="minimap-container">
+      <h2>Minimap – <span id="map-view">Attacking</span></h2>
+      <img id="minimap" src="" alt="Minimap"/>
+      <div id="dots-container"></div>
+    </div>
+  </main>
+
+  <div id="popup" class="popup">
+    <div id="popup-role-badge" class="role-badge"></div>
+    <h3 id="popup-title"></h3>
+    <iframe id="popup-video" src="" allowfullscreen></iframe>
+    <p id="popup-description"></p>
+    <div class="popup-buttons">
+      <button class="share-btn" onclick="shareLineup()">Share with Friends</button>
+      <button class="close-btn" onclick="closePopup()">Close</button>
+    </div>
+    
+  </div>
+
+  <footer>
+    <p>RadianLine &copy; 2025 —  Elevate your Valorant gameplay with easy and professional lineups.</p>
+    <p>Gharam Rawad | Arab Open University.</p>
+    <p class="footer-friends"></p>
+  </footer>
+
+  <script src="scripts/lineups.js"></script>
+
+  <script>
+    function closeQuickTip() {
+      document.getElementById('quick-tip').style.display = 'none';
+    }
+  </script>
+  <script>
+    function shareLineup() {
+      const videoUrl = document.getElementById('popup-video').src;
+    
+      if (navigator.share) {
+        navigator.share({
+          title: 'Check out this Valorant lineup!',
+          url: videoUrl,
+        }).then(() => {
+          console.log('Thanks for sharing!');
+        }).catch(console.error);
+      } else {
+        
+        const twitterShare = `https://twitter.com/intent/tweet?url=${encodeURIComponent(videoUrl)}&text=Check out this insane lineup!`;
+        const discordMessage = `https://discord.com/channels/@me`;
+    
+        const shareOptions = `
+          Share manually:<br/>
+          <a href="${twitterShare}" target="_blank">Share on Twitter</a><br/>
+          <a href="${discordMessage}" target="_blank">Send via Discord</a><br/>
+          Or copy this link: <input type="text" value="${videoUrl}" onclick="this.select()" readonly style="width: 90%;">
+        `;
+        alert('Sharing not supported on this device.\n\n' + videoUrl);
+      }
+    }
+    </script>
+    
+</body>
+</html>
+

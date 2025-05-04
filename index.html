@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RadianLine</title>
+  <link rel="stylesheet" href="styles/main.css"/>
+</head>
+<body>
+  
+  <header>
+    <img src="assets/images/agent8-logo.png" alt="RadianLine Logo" class="logo">
+    <h1>RadianLine</h1>
+    <p>“RadianLine - Pick a map and discover the best lineups.”</p>
+  </header>
+
+  <main>
+    <div class="map-grid">
+      <div class="map-card" onclick="viewLineups('Ascent')">
+        <img src="assets/images/maps/Ascent.png" alt="Ascent">
+        <h3>Ascent</h3>
+      </div>
+      <div class="map-card" onclick="viewLineups('Haven')">
+        <img src="assets/images/maps/Haven.png" alt="Haven">
+        <h3>Haven</h3>
+      </div>
+      <div class="map-card" onclick="viewLineups('Pearl')">
+        <img src="assets/images/maps/Pearl.png" alt="Pearl">
+        <h3>Pearl</h3>
+      </div>
+      <div class="map-card" onclick="viewLineups('Icebox')">
+        <img src="assets/images/maps/Icebox.png" alt="Icebox">
+        <h3>Icebox</h3>
+      </div>
+      <div class="map-card" onclick="viewLineups('Fracture')">
+        <img src="assets/images/maps/Fracture.png" alt="Fracture">
+        <h3>Fracture</h3>
+      </div>
+    </div>
+  </main>
+          
+
+
+  <div id="welcome-popup" class="welcome-popup">
+    <div class="popup-content">
+      <video id="intro-video" autoplay playsinline controls>
+        <source src="assets/intro.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+  
+      <div id="welcome-message" class="popup-message" style="display: none;">
+        <h2>Wanna get this good?</h2>
+        <button id="continue-button" class="popup-button">Click Here</button>
+      </div>
+    </div>
+  </div>
+  
+  
+  <section class="upcoming-maps">
+    <h2>Upcoming Maps</h2>
+    <div class="map-grid">
+      <div class="map-card upcoming">
+        <img src="assets/images/maps/Split.png" alt="Split">
+        <h3>Split</h3>
+      </div>
+      <div class="map-card upcoming">
+        <img src="assets/images/maps/Lotus.png" alt="Lotus">
+        <h3>Lotus</h3>
+      </div>
+      <div class="map-card upcoming">
+        <img src="assets/images/maps/Abbys.png" alt="abbys">
+        <h3>Abbys</h3>
+      </div>
+      <div class="map-card upcoming">
+        <img src="assets/images/maps/Breeze.png" alt="breeze">
+        <h3>Breeze</h3>
+      </div>
+    </div>
+  </section>
+  
+
+  <footer>
+    <footer>
+      <p>RadianLine &copy; 2025 — Elevate your Valorant gameplay with easy and professional lineups.</p>
+      <p>Gharam Rawad | Arab Open University.</p>
+      <p class="footer-friends"></p>
+    </footer>
+  </footer>
+
+  <script src="scripts/main.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const popup = document.getElementById('welcome-popup');
+      const video = document.getElementById('intro-video');
+      const welcomeMessage = document.getElementById('welcome-message');
+      const continueButton = document.getElementById('continue-button');
+  
+      if (sessionStorage.getItem('introPlayed')) {
+        popup.style.display = 'none';
+        video.pause();
+        video.currentTime = 0;
+      } else {
+        sessionStorage.setItem('introPlayed', 'true');
+  
+        video.muted = false;
+        const playPromise = video.play();
+  
+        if (playPromise !== undefined) {
+          playPromise.catch(error => {
+            console.log('Autoplay with sound failed:', error);
+            video.muted = true;
+            video.play();
+          });
+        }
+      }
+  
+      video.addEventListener('ended', () => {
+        welcomeMessage.style.display = 'flex';
+      });
+  
+      continueButton.addEventListener('click', () => {
+  video.pause();
+  video.currentTime = 0;
+  
+  popup.classList.add('fade-out'); 
+
+  // After animation ends (0.5s)
+  setTimeout(() => {
+    popup.style.display = 'none';
+  }, 500);
+});
+
+  
+      // STOP video if user navigates away
+      window.addEventListener('beforeunload', () => {
+        video.pause();
+        video.currentTime = 0;
+      });
+    });
+  </script>
+</body>
+</html>
